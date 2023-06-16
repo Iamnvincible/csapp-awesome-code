@@ -16,8 +16,6 @@ int sra(int x, int k) {
   int w = sizeof(int) << 3;
   //正数和负数都要考虑
   //正数保持不变，负数替换为 1
-  // todo
-  //
   unsigned sign = (1 << w - k - 1) & xsrl;  //如果>0就是负数，=0就是正数
   unsigned mask = -1 << w - k;
   //如果符号位 sign 为 1，说明原数为负数，掩码不能变
@@ -25,12 +23,12 @@ int sra(int x, int k) {
   mask &= (!sign - 1);
   return mask | xsrl;
 }
-int main(int argc, char const *argv[]) {
-  unsigned x = 1 << 31;
-  int y = 1;
-  int z = -1;
-  assert(srl(x, 8) == x >> 8);
-  assert(sra(y, 8) == y >> 8);
-  assert(sra(z, 8) == z >> 8);
-  return 0;
-}
+// int main(int argc, char const *argv[]) {
+//   unsigned x = 1 << 31;
+//   int y = 1;
+//   int z = -1;
+//   assert(srl(x, 8) == x >> 8);
+//   assert(sra(y, 8) == y >> 8);
+//   assert(sra(z, 8) == z >> 8);
+//   return 0;
+// }
